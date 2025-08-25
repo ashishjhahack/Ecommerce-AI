@@ -16,6 +16,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
 import Verify from './pages/Verify';
+import ChatbotWidget from './components/Chatbot/ChatbotWidget';
 
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
         <Route path='/verify' element={<Verify />} />
       </Routes>
       <Footer />
+      <ChatbotWidget />
     </div>
   )
 }
