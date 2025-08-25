@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
+@import "tailwindcss";
+
+/* for anchor we have active classname which is by-default */
+a.active hr{
+  display: block;    /* display visible */
+}
+
+*{
+  font-family: Outfit;
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
+
+.prata-regular {
+  font-family: "Prata", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* for small screen sidebar  */
+@media (max-width: 640px){
+  a.active{
+    background-color: black;
+    color: white;
+  }
+}
