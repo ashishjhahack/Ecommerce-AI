@@ -1,18 +1,20 @@
 import { useContext, useState, useRef, useEffect } from "react";
 import { ChatContext } from "../../context/ChatContext";
 import MessageBubble from "./MessageBubble.jsx";
+import { useNavigate } from "react-router-dom";
 
 const ChatWindow = ({ isOpen }) => {
   const { messages, sendMessage, loading } = useContext(ChatContext);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
 
   const handleSend = () => {
-    if (!input.trim()) return;
+    if (!input.trim()) return;       // trim to remove leading and trailing spaces
     sendMessage(input);
     setInput("");
   };
@@ -37,9 +39,9 @@ const ChatWindow = ({ isOpen }) => {
             {msg.products && msg.products.length > 0 && (
               <div className="grid grid-cols-2 gap-2 mt-2">
                 {msg.products.map((product) => (
-                  <div
+                  <div onClick={() => {navigate(`/product/${product._id}`)}}
                     key={product._id}
-                    className="border rounded-lg p-2 shadow-sm hover:shadow-md transition"
+                    className="border rounded-lg p-2 shadow-sm hover:shadow-md transition cursor-pointer"
                   >
                     <img
                       src={product.image?.[0]}
