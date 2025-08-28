@@ -4,6 +4,7 @@ import { NavLink , Link} from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
 import gsap from 'gsap';
 
+
 const Navbar = () => {
 
   // Animations

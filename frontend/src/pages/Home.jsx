@@ -6,15 +6,17 @@ import OurPolicy from '../components/OurPolicy'
 import NewsletterBox from '../components/NewsletterBox'
 import TopFeatures from '@/components/TopFeatures'
 import ScrollVelocity from '../components/ScrollVelocity';
+import Banner from '@/components/Banner'
 
 const Home = () => {
   return (
     <div>
       <Hero />
+      <Banner />
       <ScrollVelocity
         texts={[".Shop Smart", ".Best Sellers"]}
         
-        className="custom-scroll-text"
+        className="custom-scroll-text mt-5"
       />
       <TopFeatures />
       <LatestCollection />
