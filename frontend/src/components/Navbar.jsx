@@ -1,9 +1,36 @@
-import React, { useContext, useState } from 'react'
+import React, { useRef, useContext, useEffect, useState } from 'react'
 import { assets } from '../assets/assets'
 import { NavLink , Link} from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
+import gsap from 'gsap';
 
 const Navbar = () => {
+
+  // Animations
+    const logoRef = useRef(null)
+    const linkRef = useRef(null)
+    const tagRef = useRef(null)
+
+    useEffect(() => {
+      // const t1 = gsap.timeline()
+
+      gsap.fromTo(logoRef.current, 
+        {opacity: 0, x:-50},
+        {opacity: 1, x:0, duration: 1, ease: "power3.out"}
+      )
+
+      gsap.fromTo(linkRef.current, 
+        {opacity: 0, y:-30},
+        {opacity: 1, y:0, duration: 1, ease: "power3.out"}
+      )
+
+      gsap.fromTo(tagRef.current, 
+        {opacity: 0, x:50},
+        {opacity: 1, x:0, duration: 1, ease: "power3.out"}
+      )
+    }, [])
+
+
     const [visible, setVisible] = useState(false);
 
     const {setShowSearch ,getCartCount, navigate, token, setToken, setCartItems } = useContext(ShopContext);
@@ -16,16 +43,16 @@ const Navbar = () => {
     }
   return (
     <div className='flex items-center justify-between py-5 font-medium'>
-      <Link to='/'>
-        <p className=' text-gray-700 text-4xl font-bold'>EcoShop.</p>
+      <Link ref={logoRef} to='/'>
+        <p className=' text-gray-700 text-4xl font-bold'>Ecom-AI</p>
       </Link>
 
       {/* hide this elemnet for small screen  */}
-      <ul className='hidden sm:flex gap-5 text-sm text-grey-700'>    
+      <ul ref={linkRef} className='hidden sm:flex gap-5 text-sm text-grey-700'>    
         <NavLink to= '/' className='flex flex-col items-center gap-1'>
             <p>HOME</p>
             <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden'/>
-        </NavLink>
+        </NavLink> 
         <NavLink to= '/collection' className='flex flex-col items-center gap-1'>
             <p>COLLECTION</p>
             <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden'/>
@@ -40,7 +67,7 @@ const Navbar = () => {
         </NavLink>
       </ul>
 
-      <div className='flex items-center gap-6'>
+      <div ref={tagRef} className='flex items-center gap-6'>
         <img onClick={() => setShowSearch(true)} src={assets.search_icon} className='w-5 cursor-pointer' alt="" />
 
 {/* group is a special Tailwind class used for grouping hover/focus/active states. USe for dropdown menu  */}
