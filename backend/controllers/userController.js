@@ -2,6 +2,7 @@ import userModel from "../models/userModel.js";
 import validator from 'validator';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import crypto from 'crypto';
 
 const createToken = (id) => {
     return jwt.sign({id}, process.env.JWT_SECRET)    // .sign is used to create a token
@@ -76,6 +77,62 @@ const login = async (req, res) => {
     }
 }
 
+const forgotPassword = async (req, res) => {
+	const { email } = req.body;
+	try {
+		const user = await userModel.findOne({ email });
+
+		if (!user) {
+			return res.status(400).json({ success: false, message: "User not found" });
+		}
+
+		// Generate reset token
+		const resetToken = crypto.randomBytes(20).toString("hex");       // this is for generating a unique token
+		const resetTokenExpiresAt = Date.now() + 1 * 60 * 60 * 1000; // 1 hour
+
+		user.resetPasswordToken = resetToken;
+		user.resetPasswordExpiresAt = resetTokenExpiresAt;
+
+		await user.save();
+
+		res.status(200).json({ success: true, message: "Now you can reset your password" });
+	} catch (error) {
+		console.log("Error in forgotPassword ", error);
+		res.status(400).json({ success: false, message: error.message });
+	}
+};
+
+const resetPassword = async (req, res) => {
+	try {
+		const { token } = req.params;
+		const { password } = req.body;
+
+		const user = await userModel.findOne({
+			resetPasswordToken: token,
+			resetPasswordExpiresAt: { $gt: Date.now() },
+		});
+
+		if (!user) {
+			return res.status(400).json({ success: false, message: "Invalid or expired reset token" });
+		}
+
+		// update password
+		const hashedPassword = await bcrypt.hash(password, 10);
+
+		user.password = hashedPassword;
+		user.resetPasswordToken = undefined;
+		user.resetPasswordExpiresAt = undefined;
+		await user.save();
+
+		await sendResetSuccessEmail(user.email);
+
+		res.status(200).json({ success: true, message: "Password reset successful" });
+	} catch (error) {
+		console.log("Error in resetPassword ", error);
+		res.status(400).json({ success: false, message: error.message });
+	}
+};
+
 // Route for admin login 
 const adminLogin = async (req, res) => {
     try {
@@ -97,4 +154,4 @@ const adminLogin = async (req, res) => {
 
 }
 
-export {register, login, adminLogin};
+export { register, login, adminLogin, forgotPassword, resetPassword };
