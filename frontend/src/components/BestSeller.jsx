@@ -1,11 +1,28 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useRef } from 'react'
 import { ShopContext } from '../context/ShopContext';
 import Title from './Title';
 import ProductItem from './ProductItem';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const BestSeller = () => {
     const { products } = useContext(ShopContext);
     const [bestSeller, setBestSeller] = useState([]);
+
+    const bsRef = useRef(null);
+
+    useEffect(() => {
+      gsap.fromTo(bsRef.current, {opacity: 0, y: 40}, {opacity: 1, y: 0, duration: 1, ease: 'power3.out', 
+        scrollTrigger: {
+          trigger: bsRef.current,
+          start: "top 70%",
+          toggleActions: "play none none reverse",
+          // scrub: true          // scrub means animation is linked to scrollbar movement
+        }
+      })
+    })
 
     useEffect(() => {
         const bestProducts = products.filter((item) => (item.bestseller))    // only show if bestseller is true
@@ -20,7 +37,7 @@ const BestSeller = () => {
         </p>
       </div>
 
-      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
+      <div ref={bsRef} className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
         {
             bestSeller.map((item, index) => (
                 <ProductItem key={index} id={item._id} name={item.name} image={item.image} price={item.price}/>
