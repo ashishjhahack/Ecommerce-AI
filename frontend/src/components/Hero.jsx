@@ -91,7 +91,7 @@ const Hero = () => {
 
 
         <div ref={btnRef} className="flex justify-center mt-6">
-          <button onClick={() => navigate('/collection')} className="flex items-center gap-2 bg-gray-700 text-white text-2xl px-5 py-2 rounded-2xl hover:bg-gray-700 transition">
+          <button onClick={() => navigate('/collection')} className="flex items-center gap-2 bg-gray-900 border-2 border-black text-white text-2xl px-5 py-2 rounded-2xl hover:bg-black transition-all duration-300 ease-in-out">
             <p>Shop Now</p>
             <ArrowRight />
           </button>

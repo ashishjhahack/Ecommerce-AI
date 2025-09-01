@@ -17,13 +17,15 @@ import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
 import Verify from './pages/Verify';
 import ChatbotWidget from './components/Chatbot/ChatbotWidget';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
 
 
 const App = () => {
   return (
     <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[10vw] '>
-      <ToastContainer />
+      <ToastContainer position="top-center" autoClose={3000} theme="dark"/>
       <Navbar />
       <SearchBar />
       <Routes>
@@ -37,6 +39,8 @@ const App = () => {
         <Route path='/place-order' element={<PlaceOrder />} />
         <Route path='/orders' element={<Orders />} />
         <Route path='/verify' element={<Verify />} />
+        <Route path='/forgot-password' element={<ForgotPassword />} />
+        <Route path='/reset-password/:token' element={<ResetPassword />} />
       </Routes>
       <Footer />
       <ChatbotWidget />
