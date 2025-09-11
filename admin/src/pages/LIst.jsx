@@ -3,7 +3,7 @@ import { backendUrl, currency } from '../App';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-const List = ({token}) => {
+const LIst = ({token}) => {
   const [list, setList] = useState([]);
 
   const fetchList = async () => {
@@ -70,4 +70,4 @@ const List = ({token}) => {
   )
 }
 
-export default List
+export default LIst
