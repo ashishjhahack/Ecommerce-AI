@@ -41,10 +41,10 @@
 
 ## 🛠 **Tech Stack**
 
-| **Frontend**   | **Backend** | **Database** | **Styling** |
-|-----------------|------------|--------------|-------------|
-| React.js        | Node.js    | MongoDB      | TailwindCSS |
-| JavaScript (ES6)| Express.js | Mongoose     | CSS3, HTML5 |
+| **Frontend**   | **Backend** | **Database** | **Styling** | **Animation** |
+|-----------------|------------|--------------|-------------|---------------|
+| React.js        | Node.js    | MongoDB      | TailwindCSS | GSAP
+| JavaScript (ES6)| Express.js | Mongoose     | CSS, HTML   | Framer-motion |
 
 ---
 
