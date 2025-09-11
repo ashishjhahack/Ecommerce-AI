@@ -5,7 +5,7 @@
 ---
 
 ## 🖼️ **Preview**
-![Ecom-AI Screenshot](.frontend/src/assets/Ecom-AI-img.png)
+![Ecom-AI Screenshot](https://github.com/ashishjhahack/Ecommerce-AI/blob/main/frontend/src/assets/Ecom-AI-img.png)
 
 ---
 
