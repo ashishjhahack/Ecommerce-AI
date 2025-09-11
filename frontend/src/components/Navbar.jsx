@@ -21,7 +21,7 @@ const Navbar = () => {
     <div className="flex items-center justify-between py-5 font-medium">
       {/* Logo */}
       <Link to="/">
-        <p className="text-gray-700 text-4xl font-bold">EcoShop.</p>
+        <p className="text-gray-700 text-4xl font-bold">Ecom-AI</p>
       </Link>
 
       {/* Nav Links (hidden on small screens) */}

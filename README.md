@@ -1,8 +1,11 @@
-<h1># 🌿 **Ecoshop – Modern E-commerce Web Application**</h1>
+# 🧥 **Ecom-AI – Modern E-commerce Web Application**
 
+> **Ecoshop** is a feature-rich, full-stack e-commerce website offering **online shopping** with multiple payment options, advanced filtering, AI chatbot support, and a clean UI for a seamless user experience.
 
+---
 
-> **Ecoshop** is a feature-rich, full-stack e-commerce website offering **online shopping** with multiple payment options, advanced filtering, and a clean UI for a seamless user experience.
+## 🖼️ **Preview**
+![Ecom-AI Screenshot](.frontend/src/assets/Ecom-AI-img.png)
 
 ---
 
@@ -30,6 +33,8 @@
 - 🌐 **Responsive Design with TailwindCSS**
 - ☁️ **Cloud Image Storage (Cloudinary)**
 - 🔐 **JWT Authentication**
+- 🔑 **Forgot Password (with Email Reset Link)**
+- 🤖 **AI Chatbot (Product & Support Assistance)**
 - 📂 **MERN Stack Architecture**
 
 ---
@@ -47,8 +52,4 @@
 
 ### **🔹 Backend**
 ```bash
-npm install mongoose jsonwebtoken validator multer cloudinary express nodemon razorpay stripe bcrypt dotenv
-
-### **🔹 Frontend**
-```bash
-npm install react-router-dom react-toastify axios tailwindcss
+npm install mongoose jsonwebtoken validator multer cloudinary express nodemon razorpay stripe bcrypt dotenv nodemailer
