@@ -1,6 +1,6 @@
 import { useContext, useState, useRef, useEffect } from "react";
 import { ChatContext } from "../../context/ChatContext";
-import MessageBubble from "./MessageBubble.jsx";
+import Messagebubble from "./Messagebubble.jsx";
 import { useNavigate } from "react-router-dom";
 
 const ChatWindow = ({ isOpen }) => {
@@ -33,7 +33,7 @@ const ChatWindow = ({ isOpen }) => {
         {messages.map((msg, idx) => (
           <div key={idx}>
             {/* Normal text bubble */}
-            {msg.text && <MessageBubble sender={msg.sender} text={msg.text} />}
+            {msg.text && <Messagebubble sender={msg.sender} text={msg.text} />}
 
             {/* If bot also sends product list */}
             {msg.products && msg.products.length > 0 && (
@@ -56,7 +56,7 @@ const ChatWindow = ({ isOpen }) => {
             )}
           </div>
         ))}
-        {loading && <MessageBubble sender="bot" text="Typing..." />}
+        {loading && <Messagebubble sender="bot" text="Typing..." />}
         <div ref={messagesEndRef} />
       </div>
 

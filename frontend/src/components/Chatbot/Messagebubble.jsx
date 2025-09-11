@@ -1,4 +1,4 @@
-const MessageBubble = ({ sender, text }) => {
+const Messagebubble = ({ sender, text }) => {
   const isUser = sender === "user";
 
   return (
@@ -16,4 +16,4 @@ const MessageBubble = ({ sender, text }) => {
   );
 };
 
-export default MessageBubble;
+export default Messagebubble;
