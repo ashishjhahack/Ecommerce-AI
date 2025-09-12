@@ -1,6 +1,6 @@
 # 🧥 **Ecom-AI – Modern E-commerce Web Application**
 
-> **Ecoshop** is a feature-rich, full-stack e-commerce website offering **online shopping** with multiple payment options, advanced filtering, AI chatbot support, and a clean UI for a seamless user experience.
+> **Ecom-AI** is a feature-rich, full-stack e-commerce website offering **online shopping** with multiple payment options, advanced filtering, AI chatbot support, and a clean UI for a seamless user experience.
 
 ---
 
